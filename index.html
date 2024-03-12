@@ -150,6 +150,18 @@
         .social-media a:hover {
             color: #ff00ff;
         }
+
+        .customer-review {
+            border: 1px solid #777;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .customer-review .rating {
+            color: #ff0;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
@@ -197,7 +209,6 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec est at risus vestibulum.</p>
             <p>Nulla maximus tellus at vestibulum vehicula. Proin eget tellus eu eros vehicula molestie.</p>
         </div>
-
         <div class="contact-info">
             <h2>Informações de Contato</h2>
             <p>Telefone: (51) 98450-425</p>
@@ -210,6 +221,18 @@
             <a href="#">Facebook</a>
             <a href="#">Instagram</a>
             <a href="#">Twitter</a>
+        </div>
+        
+        <div class="customer-review">
+            <h3>Michel Machado Gonçalves</h3>
+            <p>Esse gordinho é um fanfarrão nem responde o cara Só quer saber de festa e mulher Esse aí prefere revoada do que trabalhar</p>
+            <div class="rating">★</div>
+        </div>
+        
+        <div class="customer-review">
+            <h3>Igor Felipe</h3>
+            <p>Excelente atendimento e resultados impecáveis. Recomendo muito!</p>
+            <div class="rating">★★★★★</div>
         </div>
     </div>
     <script>document.getElementById('appointmentForm').addEventListener('submit', function(event) {
