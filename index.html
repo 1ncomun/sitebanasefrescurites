@@ -165,6 +165,9 @@
     </style>
 </head>
 <body>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+<script type="text/javascript">window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/1gorb/corte', text: 'Agende seu horário ', color: '#0069ff', textColor: '#92fdbb', branding: undefined }); }</script>
     <div class="container">
         <div class="calendly-link" id="https://calendly.com/1gorb/corte">
             <h2>Agende diretamente pelo Calendly</h2>
@@ -230,7 +233,7 @@
         </div>
         
         <div class="customer-review">
-            <h3>Igor B</h3>
+            <h3>Igor Felipe</h3>
             <p>Excelente atendimento e resultados impecáveis. Recomendo muito!</p>
             <div class="rating">★★★★★</div>
         </div>
@@ -256,7 +259,7 @@
 
         var formattedDate = new Date(date).toISOString().split('T')[0];
 
-        var calendlyURL = 'https://calendly.com/sua-barbearia/';
+        var calendlyURL = 'https://calendly.com/sua-barbearia/' + service.toLowerCase().replace(' ', '-') + '?name=' + encodeURIComponent(name) + '&date=' + formattedDate;
 
         window.location.href = calendlyURL;
     });</script>
