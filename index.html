@@ -256,7 +256,7 @@
 
         var formattedDate = new Date(date).toISOString().split('T')[0];
 
-        var calendlyURL = 'https://calendly.com/sua-barbearia/' + service.toLowerCase().replace(' ', '-') + '?name=' + encodeURIComponent(name) + '&date=' + formattedDate;
+        var calendlyURL = 'https://calendly.com/sua-barbearia/';
 
         window.location.href = calendlyURL;
     });</script>
