@@ -1,0 +1,53 @@
+<!-- Página do Barbeiro 1 -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbeiro 1</title>
+</head>
+<body>
+    <h1>Barbeiro 1</h1>
+    <form id="barber1Form">
+        <div>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div>
+            <label for="service">Serviço:</label>
+            <select id="service" required>
+                <option value="">Selecione um serviço</option>
+                <option value="Corte de Cabelo">Corte de Cabelo</option>
+                <option value="Barba">Barba</option>
+                <!-- Adicione mais serviços, se necessário -->
+            </select>
+        </div>
+        <div>
+            <label for="date">Data:</label>
+            <input type="date" id="date" required>
+        </div>
+        <div>
+            <label for="time">Horário:</label>
+            <input type="time" id="time" required>
+        </div>
+        <div>
+            <button type="submit">Agendar</button>
+        </div>
+    </form>
+    <div id="confirmationMessage">Agendamento realizado com sucesso!</div>
+
+    <script>
+        document.getElementById('barber1Form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            if (this.checkValidity()) {
+                document.getElementById('confirmationMessage').classList.add('show');
+                setTimeout(function() {
+                    document.getElementById('confirmationMessage').classList.remove('show');
+                }, 3000);
+            } else {
+                this.reportValidity();
+            }
+        });
+    </script>
+</body>
+</html>
