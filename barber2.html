@@ -3,68 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbearia</title>
+    <title>Salão de Cabeleireiro</title>
     <style>
+        /* Estilos CSS existentes omitidos por brevidade */
+        /* Novos estilos para o tema escuro */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #222;
+            color: #fff;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #333;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        h1 {
+        h1, h2 {
             color: #007bff;
             text-align: center;
             margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        #servicesList {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        #servicesList li {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        #servicesList li:hover {
+            color: #ff00ff;
         }
 
         form {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
 
         label {
             margin-bottom: 5px;
             font-weight: bold;
-            margin-right: 10px;
-            flex: 1 0 100%;
+            color: #ccc;
         }
 
         input, select {
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            width: calc(100% - 25px);
-            box-sizing: border-box;
-            font-size: 16px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #777;
+            border-radius: 3px;
+            background-color: #444;
+            color: #fff;
         }
 
         button {
-            padding: 15px 30px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 3px;
             cursor: pointer;
             transition: background-color 0.3s;
-            font-size: 16px;
-            font-weight: bold;
-            margin-top: 15px;
-            width: 100%;
-            box-sizing: border-box;
-            flex: 1 0 100%;
         }
 
         button:hover {
@@ -74,15 +88,12 @@
         #confirmationMessage {
             text-align: center;
             margin-top: 20px;
-            padding: 15px;
-            background-color: #dff0d8;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
+            padding: 10px;
+            background-color: #007bff;
+            border: 1px solid #0056b3;
+            border-radius: 3px;
             display: none;
             transition: opacity 0.3s;
-            width: 100%;
-            box-sizing: border-box;
-            flex: 1 0 100%;
         }
 
         #confirmationMessage.show {
@@ -90,144 +101,150 @@
             opacity: 1;
         }
 
-        .product {
-            position: relative;
-            margin-bottom: 30px;
-            cursor: pointer;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            flex: 1 0 200px;
-            margin-right: 20px;
-        }
-
-        .product img {
-            max-width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .product:hover img {
-            transform: scale(1.05);
-        }
-
-        .product-details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            color: white;
-            transition: bottom 0.3s;
-        }
-
-        .product:hover .product-details {
-            bottom: -50px;
-        }
-
-        .customer-review {
-            margin-top: 30px;
-            border-top: 1px solid #ccc;
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .customer-review .review {
-            flex: 1 0 30%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .customer-review .review h3 {
-            margin-top: 0;
+        .barber-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
             color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
-        .customer-review .review p {
-            margin-bottom: 0;
+        .barber-link:hover {
+            color: #ff00ff;
         }
 
-        @media screen and (max-width: 768px) {
-            .product {
-                flex: 1 0 100%;
-                margin-right: 0;
-            }
+        .additional-info {
+            margin-top: 30px;
+            text-align: center;
+        }
 
-            input, select, button, #confirmationMessage {
-                width: 100%;
-            }
+        .additional-info p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 5px;
+            color: #777;
+        }
+
+        .social-media {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .social-media a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #ff00ff;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Barbearia</h1>
-        <form id="barberForm">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" placeholder="Seu nome..." required>
-            <label for="service">Serviço:</label>
-            <select id="service" required>
-                <option value="" disabled selected hidden>Selecione um serviço</option>
-                <option value="Corte de Cabelo">Corte de Cabelo</option>
-                <option value="Barba">Barba</option>
-                <!-- Adicione mais serviços, se necessário -->
-            </select>
-            <label for="date">Data:</label>
-            <input type="date" id="date" required>
-            <label for="time">Horário:</label>
-            <input type="time" id="time" required>
-            <button type="submit">Agendar</button>
+        <div class="calendly-link" id="calendlyLink">
+            <h2>Agende diretamente pelo Calendly</h2>
+            <p>Clique no botão abaixo para agendar seu horário diretamente no Calendly.</p>
+            <a href="#" id="calendlyButton">Agendar no Calendly</a>
+        <h1>Salão de Cabeleireiro</h1>
+        <h2>Serviços</h2>
+        <ul id="servicesList">
+            <li>Corte de Cabelo - R$ 50,00</li>
+            <li>Coloração - R$ 80,00</li>
+            <li>Penteado - R$ 60,00</li>
+        </ul>
+        <h2>Agendamento</h2>
+        <form id="appointmentForm">
+            <div>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="service">Serviço:</label>
+                <select id="service" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="Corte de Cabelo">Corte de Cabelo</option>
+                    <option value="Coloração">Coloração</option>
+                    <option value="Penteado">Penteado</option>
+                </select>
+            </div>
+            <div>
+                <label for="date">Data:</label>
+                <input type="date" id="date" required>
+            </div>
+            <div>
+                <button type="submit">Agendar</button>
+            </div>
         </form>
         <div id="confirmationMessage">Agendamento realizado com sucesso!</div>
+        <a href="barber1.html" class="barber-link">Barbeiro 1</a>
+        <a href="barber2.html" class="barber-link">Barbeiro 2</a>
 
-        <!-- Adicione imagens de fundo para os produtos -->
-        <div class="product">
-            <img src="https://via.placeholder.com/600x400" alt="Corte de Cabelo">
-            <div class="product-details">
-                <h3>Corte de Cabelo</h3>
-                <p>Descrição do serviço ou preço aqui</p>
-            </div>
+        <div class="additional-info">
+            <h2>Informações Adicionais</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec est at risus vestibulum.</p>
+            <p>Nulla maximus tellus at vestibulum vehicula. Proin eget tellus eu eros vehicula molestie.</p>
         </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/600x400" alt="Barba">
-            <div class="product-details">
-                <h3>Barba</h3>
-                <p>Descrição do serviço ou preço aqui</p>
-            </div>
-        </div>
-        <!-- Adicione mais produtos, se necessário -->
 
-        <div class="customer-review">
-            <div class="review">
-                <h3>Cliente 1</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae odio sed magna.</p>
-            </div>
-            <div class="review">
-                <h3>Cliente 2</h3>
-                <p>Ut molestie quam vitae nibh euismod, sit amet varius eros feugiat. Phasellus vel magna ac est fermentum luctus.</p>
-            </div>
-            <div class="review">
-                <h3>Cliente 3</h3>
-                <p>Donec aliquet ligula eu enim dictum, nec rutrum elit vestibulum. Vivamus a libero vel mi consectetur semper nec sit amet nunc.</p>
-            </div>
+        <div class="contact-info">
+            <h2>Informações de Contato</h2>
+            <p>Telefone: (51) 98450-425</p>
+            <p>Email: no7comun@gmail.com</p>
+            <p>Endereço: Rua Exemplo, 123 - Bairro - Cidade</p>
+        </div>
+
+        <div class="social-media">
+            <h2>Nos Siga nas Redes Sociais</h2>
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Twitter</a>
         </div>
     </div>
+    <script>document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var name = document.getElementById('name').value;
+        var service = document.getElementById('service').value;
+        var date = document.getElementById('date').value;
+
+        var formattedDate = new Date(date).toISOString().split('T')[0];
+
+        var calendlyURL = 'https://calendly.com/sua-barbearia/' + service.toLowerCase().replace(' ', '-') + '?name=' + encodeURIComponent(name) + '&date=' + formattedDate;
+
+        window.location.href = calendlyURL;
+    });
+
+    document.getElementById('calendlyButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        var name = document.getElementById('name').value;
+        var service = document.getElementById('service').value;
+        var date = document.getElementById('date').value;
+
+        var formattedDate = new Date(date).toISOString().split('T')[0];
+
+        var calendlyURL = 'https://calendly.com/sua-barbearia/' + service.toLowerCase().replace(' ', '-') + '?name=' + encodeURIComponent(name) + '&date=' + formattedDate;
+
+        window.location.href = calendlyURL;
+    });</script>
 
     <script>
-        document.getElementById('barberForm').addEventListener('submit', function(event) {
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            if (this.checkValidity()) {
-                document.getElementById('confirmationMessage').classList.add('show');
-                setTimeout(function() {
-                    document.getElementById('confirmationMessage').classList.remove('show');
-                }, 3000);
-            } else {
-                this.reportValidity();
-            }
+            document.getElementById('confirmationMessage').classList.add('show');
+            setTimeout(function() {
+                document.getElementById('confirmationMessage').classList.remove('show');
+            }, 3000);
         });
     </script>
 </body>
